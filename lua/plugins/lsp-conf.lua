@@ -30,9 +30,9 @@ return {
             lspconfig.pyre.setup({
                 capabilities = capabilities
             })
-            lspconfig.jdtls.setup({
+--[[            lspconfig.jdtls.setup({     -- currently handled via nvim-jdtls?
                 capabilities = capabilities
-            })
+            }) --]]
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
