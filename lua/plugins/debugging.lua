@@ -29,14 +29,6 @@ return {
                 dapui.close()
             end
 
---          dap.adapters.java = {
---              type = "executable",
---              command = "java",
---              args = {
---                  "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:5005"
---              }
---          }
-
             dap.configurations.java = {
                 {
                     type = "java",
