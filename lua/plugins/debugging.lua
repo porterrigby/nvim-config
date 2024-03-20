@@ -4,11 +4,6 @@ return {
         dependencies = {
             "mfussenegger/nvim-dap",
         },
-        config = function()
-            require("jdtls").start_or_attach({
-                cmd = {"/home/prigby/.local/share/nvim/mason/bin/jdtls"},
-            })
-        end,
     },
     {
         "mfussenegger/nvim-dap",
@@ -19,6 +14,7 @@ return {
         config = function()
             local dap = require("dap")
             local dapui = require("dapui")
+            dapui.setup()
 
             dap.listeners.before.attach.dapui_config = function()
                 dapui.open()
@@ -33,13 +29,13 @@ return {
                 dapui.close()
             end
 
-            dap.adapters.java = {
-                type = "executable",
-                command = "java",
-                args = {
-                    "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:5005"
-                }
-            }
+--          dap.adapters.java = {
+--              type = "executable",
+--              command = "java",
+--              args = {
+--                  "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:5005"
+--              }
+--          }
 
             dap.configurations.java = {
                 {
