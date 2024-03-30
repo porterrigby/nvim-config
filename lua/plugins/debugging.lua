@@ -6,6 +6,15 @@ return {
         },
     },
     {
+        "mfussenegger/nvim-dap-python",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+        },
+        config = function()
+            require("dap-python").setup("/home/prigby/.local/share/nvim/mason/bin/debugpy")
+        end
+    },
+    {
         "mfussenegger/nvim-dap",
         dependencies = {
             "rcarriga/nvim-dap-ui",
