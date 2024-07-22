@@ -10,7 +10,7 @@ return {
         config = function()
             require("mason-lspconfig").setup({
             -- Lsp to install
-            ensure_installed = { "lua_ls", "clangd", "pyre", "jdtls" }
+            ensure_installed = {"lua_ls", "clangd", "pyre", "jdtls", "typescript-language-server"}
             })
         end
     },
@@ -33,6 +33,21 @@ return {
 --[[            lspconfig.jdtls.setup({     -- currently handled via nvim-jdtls?
                 capabilities = capabilities
             }) --]]
+            lspconfig.tsserver.setup({
+                capabilities = capabilities,
+                autostart = true,
+                filetypes = {
+                    "javascript",
+                    "javascriptreact",
+                    "javascript.jsx",
+                    "typescript",
+                    "typescriptreact",
+                    "typescript.tsx",
+                },
+            })
+            lspconfig.html.setup({
+                capabilities = capabilities
+            })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
