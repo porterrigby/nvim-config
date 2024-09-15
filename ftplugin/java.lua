@@ -95,7 +95,7 @@ local config = {
 
 config["on_attach"] = function(client, bufnr)
     local _, _ = pcall(vim.lsp.codelens.refresh)
-    require("jdtls").setup_dap({ hotcodereplace = "auto" })   
+    require("jdtls").setup_dap({ hotcodereplace = "auto" })
     require("plugins.lsp-conf").on_attach(client, bufnr)
     local status_ok, jdtls_dap = pcall(require, "jdtls.dap")
     if status_ok then
