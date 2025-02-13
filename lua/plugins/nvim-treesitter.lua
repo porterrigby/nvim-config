@@ -4,7 +4,10 @@ return {
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = { "java", "python", "c", "bash", "go", "gomod", "gowork", "gosum" },
-            highlight = { enable = true },
+            highlight = { 
+                enable = true,
+                disable = { 'latex', },
+            },
             indent = { enable = true },
         })
     end

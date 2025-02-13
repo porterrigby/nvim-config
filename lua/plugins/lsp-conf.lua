@@ -12,7 +12,7 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 -- Lsp to install
-                ensure_installed = { "lua_ls", "clangd", "pyre", "jdtls", --[["tsserver"--]] },
+                ensure_installed = { "lua_ls", "clangd", "pyre", "jdtls", "texlab", --[["tsserver"--]] },
             })
         end,
     },
@@ -22,7 +22,6 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- Set up each language server
-
 
             local lsp_zero = require("lsp-zero")
             local lspconfig = require("lspconfig")
@@ -41,20 +40,28 @@ return {
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
 
+            lspconfig.texlab.setup({
+                capabilities = capabilities,
+            })
+
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
             })
+
             lspconfig.clangd.setup({
                 capabilities = capabilities,
             })
+
             lspconfig.pyre.setup({
                 capabilities = capabilities,
             })
+
             lspconfig.jdtls.setup({ -- currently handled via nvim-jdtls?
                 capabilities = capabilities,
                 autostart = true,
                 filetypes = { "java "}
             })
+
             lspconfig.tsserver.setup({
                 capabilities = capabilities,
                 autostart = true,
@@ -67,9 +74,11 @@ return {
                     "typescript.tsx",
                 },
             })
+
             lspconfig.html.setup({
                 capabilities = capabilities,
             })
+
             lspconfig.gopls.setup({})
             lspconfig.jedi_language_server.setup({})
             lspconfig.pylsp.setup({})
